@@ -1,0 +1,13 @@
+# Design tool source files (not needed in production)
+project/uploads/
+project/screens/
+project/.thumbnail
+project/support.js
+
+# Vercel
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
