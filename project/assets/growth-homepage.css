@@ -924,6 +924,17 @@ html[dir="rtl"] .service-row:focus-within .service-row-arrow {
   letter-spacing: .02em;
 }
 
+.featured-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font: 600 12px var(--body);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(155, 230, 168, .75);
+}
+
 .featured-link {
   display: inline-flex;
   align-items: center;

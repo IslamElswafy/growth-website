@@ -72,7 +72,8 @@ const CONTENT = {
       title: "Selected work",
       intro: "Strategy, design, and technology woven into products and platforms — part of the Growth story, not a separate gallery.",
       view: "View project",
-      all: "View all projects"
+      all: "View all projects",
+      github: "View on GitHub"
     },
     projects: [
       { n: "01", client: "Graphinion", industry: "Social Media Application", services: "React Native · TypeScript · Redux", cover: "assets/portfolio/graphinion-cover.webp", url: "https://apps.apple.com/us/app/graphinion/id6503644174" },
@@ -189,7 +190,8 @@ const CONTENT = {
       title: "أعمال مختارة",
       intro: "استراتيجية وتصميم وتقنية في منتجات ومنصات حقيقية — جزء من قصة Growth، وليست معرضًا منفصلًا.",
       view: "عرض المشروع",
-      all: "عرض كل المشاريع"
+      all: "عرض كل المشاريع",
+      github: "عرض على GitHub"
     },
     projects: [
       { n: "01", client: "Graphinion", industry: "تطبيق تواصل اجتماعي", services: "React Native · TypeScript · Redux", cover: "assets/portfolio/graphinion-cover.webp", url: "https://apps.apple.com/us/app/graphinion/id6503644174" },
@@ -248,11 +250,51 @@ const CONTENT = {
   }
 };
 
+const GITHUB_PROFILE = "https://github.com/IslamElswafy";
+
+const PORTFOLIO_INSERTS = {
+  en: [
+    {
+      client: "Savvy",
+      industry: "AI Chat Product",
+      services: "Vite · NestJS · OpenAI",
+      cover: "assets/portfolio/savvy-cover.png",
+      url: "https://savvyai.info/"
+    },
+    {
+      client: "ElAvvocato",
+      industry: "Law Firm Management System",
+      services: "Full-stack · Roles · Documents",
+      cover: "assets/portfolio/elavvocato-cover.png",
+      url: "https://apps.apple.com/eg/app/elavvocato/id6670542137"
+    }
+  ],
+  ar: [
+    {
+      client: "Savvy",
+      industry: "منتج دردشة بالذكاء الاصطناعي",
+      services: "Vite · NestJS · OpenAI",
+      cover: "assets/portfolio/savvy-cover.png",
+      url: "https://savvyai.info/"
+    },
+    {
+      client: "ElAvvocato",
+      industry: "نظام إدارة مكاتب محاماة",
+      services: "Full-stack · Roles · Documents",
+      cover: "assets/portfolio/elavvocato-cover.png",
+      url: "https://apps.apple.com/eg/app/elavvocato/id6670542137"
+    }
+  ]
+};
+
 let state = {
   lang: localStorage.getItem("growth-lang") || "ar",
   activeService: 0,
   portOn: false,
-  maxPortX: 0
+  maxPortX: 0,
+  portfolioProjects: null,
+  portfolioApiProjects: null,
+  portfolioFromGitHub: false
 };
 
 const root = document.querySelector(".site");
@@ -338,15 +380,70 @@ function renderServices(t) {
   `).join("");
 }
 
+function mapApiProject(project, lang) {
+  const placeholder = project.placeholder
+    ? (typeof project.placeholder === "object" ? project.placeholder[lang] : project.placeholder)
+    : null;
+
+  return {
+    n: project.n,
+    client: project.client,
+    industry: typeof project.industry === "object" ? project.industry[lang] : project.industry,
+    services: typeof project.services === "object" ? project.services[lang] : project.services,
+    cover: project.cover || null,
+    placeholder,
+    url: project.url || null,
+    github: project.github || null
+  };
+}
+
+function mergePortfolioProjects(apiProjects, lang) {
+  const mapped = apiProjects.map((project) => mapApiProject(project, lang));
+  const inserts = PORTFOLIO_INSERTS[lang] || [];
+  mapped.splice(2, 0, ...inserts);
+  return mapped.map((project, index) => ({
+    ...project,
+    n: String(index + 1).padStart(2, "0")
+  }));
+}
+
+function getProjects(t) {
+  if (state.portfolioProjects?.length) return state.portfolioProjects;
+  return t.projects;
+}
+
+async function loadPortfolioFromGitHub() {
+  try {
+    const response = await fetch("/api/portfolio", { headers: { Accept: "application/json" } });
+    if (!response.ok) return;
+    const payload = await response.json();
+    if (!Array.isArray(payload.projects) || !payload.projects.length) return;
+    state.portfolioFromGitHub = true;
+    state.portfolioApiProjects = payload.projects;
+    state.portfolioProjects = mergePortfolioProjects(payload.projects, state.lang);
+    renderProjects(CONTENT[state.lang] || CONTENT.ar);
+    setupPortfolioHover();
+    setupReveals();
+    setupCursor();
+    setupMagnetic();
+  } catch (_) {
+    // Static portfolio remains the fallback when the API is unavailable.
+  }
+}
+
 function renderProjects(t) {
   const list = document.querySelector("[data-project-list]");
   if (!list) return;
-  list.innerHTML = t.projects.map((project, index) => {
-    const href = project.url || "#contact";
-    const external = project.url ? 'target="_blank" rel="noopener"' : "";
+  const projects = getProjects(t);
+  list.innerHTML = projects.map((project, index) => {
+    const href = project.url || project.github || "#contact";
+    const external = href.startsWith("http") ? 'target="_blank" rel="noopener"' : "";
     const media = project.cover
       ? `<img class="featured-cover" src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.client)}" loading="${index < 2 ? "eager" : "lazy"}">`
       : `<div class="featured-placeholder"><strong>${escapeHtml(project.placeholder || "PRIVATE CASE STUDY")}</strong><span>${escapeHtml(project.client)}</span></div>`;
+    const githubLink = project.github
+      ? `<span class="featured-github">${escapeHtml(t.port.github)}</span>`
+      : "";
 
     return `
       <a class="featured-item" href="${escapeHtml(href)}" ${external} data-port-card data-reveal data-cursor data-cursor-text="${escapeHtml(t.port.view)}">
@@ -361,12 +458,24 @@ function renderProjects(t) {
               <span class="featured-tagline">${escapeHtml(project.industry)}</span>
             </h3>
             <p class="featured-stack">${escapeHtml(project.services)}</p>
+            ${githubLink}
             <span class="featured-link">${escapeHtml(t.port.view)}${iconArrow()}</span>
           </div>
         </article>
       </a>
     `;
   }).join("");
+
+  const allLink = document.querySelector(".featured-all");
+  if (allLink && state.portfolioFromGitHub) {
+    allLink.href = GITHUB_PROFILE;
+    allLink.setAttribute("target", "_blank");
+    allLink.setAttribute("rel", "noopener");
+  } else if (allLink) {
+    allLink.href = "#contact";
+    allLink.removeAttribute("target");
+    allLink.removeAttribute("rel");
+  }
 }
 
 function renderProcess(t) {
@@ -697,6 +806,9 @@ function closeMenu() {
 function toggleLanguage() {
   state.lang = state.lang === "en" ? "ar" : "en";
   localStorage.setItem("growth-lang", state.lang);
+  if (state.portfolioApiProjects) {
+    state.portfolioProjects = mergePortfolioProjects(state.portfolioApiProjects, state.lang);
+  }
   render();
   setupPortfolio();
   onScroll();
@@ -746,6 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCtaGlow();
   setupHeroVideo();
   setupPortfolio();
+  loadPortfolioFromGitHub();
   onScroll();
   setTimeout(() => {
     setupPortfolio();

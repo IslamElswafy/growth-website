@@ -1,0 +1,76 @@
+[
+  {
+    "repo": "Graphinion",
+    "client": "Graphinion",
+    "industry": {
+      "en": "Social Media Application",
+      "ar": "تطبيق تواصل اجتماعي"
+    },
+    "services": {
+      "en": "React Native · TypeScript · Redux",
+      "ar": "React Native · TypeScript · Redux"
+    },
+    "cover": "assets/portfolio/graphinion-cover.webp",
+    "url": "https://apps.apple.com/us/app/graphinion/id6503644174"
+  },
+  {
+    "repo": "blox",
+    "client": "Blox",
+    "industry": {
+      "en": "Marketplace Platform",
+      "ar": "منصة سوق سيارات"
+    },
+    "services": {
+      "en": "Full-stack · Search · Transactions",
+      "ar": "Full-stack · Search · Transactions"
+    },
+    "cover": "assets/portfolio/blox-cover.png",
+    "url": "https://www.linkedin.com/posts/islam-elswifiy-117785246_reactnative-blox-marketplaceapp-activity-7196490222585495552-Ohzh"
+  },
+  {
+    "repo": "pageswap",
+    "client": "PageSwap",
+    "industry": {
+      "en": "Digital Menu Platform",
+      "ar": "منصة قوائم رقمية"
+    },
+    "services": {
+      "en": "JavaScript · QR Menus · Hospitality",
+      "ar": "JavaScript · QR Menus · Hospitality"
+    },
+    "cover": null,
+    "url": "https://menu.revora-eg.com"
+  },
+  {
+    "repo": "Nest_ERP",
+    "client": "Taqdum ERP",
+    "industry": {
+      "en": "ERP and Operations Platform",
+      "ar": "منصة ERP وتشغيل داخلي"
+    },
+    "services": {
+      "en": "React · NestJS · Automation",
+      "ar": "React · NestJS · Automation"
+    },
+    "cover": null,
+    "placeholder": {
+      "en": "Private Case Study",
+      "ar": "دراسة حالة خاصة"
+    },
+    "url": null
+  },
+  {
+    "repo": "habit-tracker",
+    "client": "Habit Tracker",
+    "industry": {
+      "en": "Productivity Web App",
+      "ar": "تطبيق ويب للإنتاجية"
+    },
+    "services": {
+      "en": "JavaScript · PWA · UX",
+      "ar": "JavaScript · PWA · UX"
+    },
+    "cover": null,
+    "url": null
+  }
+]
