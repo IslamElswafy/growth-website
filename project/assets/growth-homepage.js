@@ -249,7 +249,7 @@ const CONTENT = {
 };
 
 let state = {
-  lang: localStorage.getItem("growth-lang") || "en",
+  lang: localStorage.getItem("growth-lang") || "ar",
   activeService: 0,
   portOn: false,
   maxPortX: 0
