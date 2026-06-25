@@ -47,5 +47,43 @@
       "ar": "دراسة حالة خاصة"
     },
     "url": null
+  },
+  {
+    "repo": "NewFSG_V1",
+    "client": "FSG Gym",
+    "industry": {
+      "en": "Sports Gym & Fitness Platform",
+      "ar": "منصة جيم رياضي ولياقة بدنية"
+    },
+    "services": {
+      "en": "Python · Membership · Workouts · Mobile",
+      "ar": "Python · اشتراكات · تمارين · موبايل"
+    },
+    "cover": null,
+    "logo": "assets/portfolio/fsg-gym-logo.svg",
+    "placeholder": {
+      "en": "Sports Gym Platform",
+      "ar": "منصة جيم رياضي"
+    },
+    "url": null
+  },
+  {
+    "repo": "mobilev1",
+    "client": "Growth Mobile",
+    "industry": {
+      "en": "Cross-Platform Mobile Application",
+      "ar": "تطبيق موبايل متعدد المنصات"
+    },
+    "services": {
+      "en": "React Native · TypeScript · API Integration",
+      "ar": "React Native · TypeScript · تكامل API"
+    },
+    "cover": null,
+    "logo": "assets/portfolio/mobile-app-logo.svg",
+    "placeholder": {
+      "en": "Mobile Application",
+      "ar": "تطبيق موبايل"
+    },
+    "url": null
   }
 ]

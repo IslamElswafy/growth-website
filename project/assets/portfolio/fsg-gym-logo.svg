@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+  <rect width="120" height="120" rx="28" fill="#0B1826"/>
+  <rect x="1" y="1" width="118" height="118" rx="27" stroke="#46C35A" stroke-opacity="0.35"/>
+  <path d="M28 56h8v8h-8v-8Zm56 0h8v8h-8v-8Z" fill="#46C35A"/>
+  <path d="M36 52h6c2.2 0 4 1.8 4 4v8c0 2.2-1.8 4-4 4h-6V52Zm42 0h-6v16h6c2.2 0 4-1.8 4-4v-8c0-2.2-1.8-4-4-4Z" fill="#9BE6A8"/>
+  <rect x="42" y="58" width="36" height="4" rx="2" fill="#46C35A"/>
+  <path d="M60 34c-8.8 0-16 7.2-16 16v4h6v-4c0-5.5 4.5-10 10-10s10 4.5 10 10v4h6v-4c0-8.8-7.2-16-16-16Z" fill="#9BE6A8"/>
+  <text x="60" y="98" text-anchor="middle" fill="#EAF1F5" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="2">FSG GYM</text>
+</svg>
