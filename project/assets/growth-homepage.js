@@ -72,15 +72,14 @@ const CONTENT = {
       title: "Selected work",
       intro: "Strategy, design, and technology woven into products and platforms — part of the Growth story, not a separate gallery.",
       view: "View project",
-      all: "View all projects",
-      github: "View on GitHub"
+      all: "View all projects"
     },
     projects: [
       { n: "01", client: "Graphinion", industry: "Social Media Application", services: "React Native · TypeScript · Redux", cover: "assets/portfolio/graphinion-cover.webp", url: "https://apps.apple.com/us/app/graphinion/id6503644174" },
       { n: "02", client: "Blox", industry: "Marketplace Platform", services: "Full-stack · Search · Transactions", cover: "assets/portfolio/blox-cover.png", url: "https://www.linkedin.com/posts/islam-elswifiy-117785246_reactnative-blox-marketplaceapp-activity-7196490222585495552-Ohzh?utm_source=share&utm_medium=member_desktop&rcm=ACoAADz7nmMBt5P0ODlhTJi-vlUlyVsdyW9q0gE" },
       { n: "03", client: "Savvy", industry: "AI Chat Product", services: "Vite · NestJS · OpenAI", cover: "assets/portfolio/savvy-cover.png", url: "https://savvyai.info/" },
       { n: "04", client: "ElAvvocato", industry: "Law Firm Management System", services: "Full-stack · Roles · Documents", cover: "assets/portfolio/elavvocato-cover.png", url: "https://apps.apple.com/eg/app/elavvocato/id6670542137" },
-      { n: "05", client: "Taqdum ERP", industry: "ERP and Operations Platform", services: "React · NestJS · Automation", placeholder: "Private Case Study" }
+      { n: "05", client: "Taqdum ERP", industry: "ERP and Operations Platform", services: "React · NestJS · Automation", logo: "assets/logo-icon.png", placeholder: "Private Case Study" }
     ],
     res: {
       eyebrow: "Results",
@@ -190,15 +189,14 @@ const CONTENT = {
       title: "أعمال مختارة",
       intro: "استراتيجية وتصميم وتقنية في منتجات ومنصات حقيقية — جزء من قصة Growth، وليست معرضًا منفصلًا.",
       view: "عرض المشروع",
-      all: "عرض كل المشاريع",
-      github: "عرض على GitHub"
+      all: "عرض كل المشاريع"
     },
     projects: [
       { n: "01", client: "Graphinion", industry: "تطبيق تواصل اجتماعي", services: "React Native · TypeScript · Redux", cover: "assets/portfolio/graphinion-cover.webp", url: "https://apps.apple.com/us/app/graphinion/id6503644174" },
       { n: "02", client: "Blox", industry: "منصة سوق سيارات", services: "Full-stack · Search · Transactions", cover: "assets/portfolio/blox-cover.png", url: "https://www.linkedin.com/posts/islam-elswifiy-117785246_reactnative-blox-marketplaceapp-activity-7196490222585495552-Ohzh?utm_source=share&utm_medium=member_desktop&rcm=ACoAADz7nmMBt5P0ODlhTJi-vlUlyVsdyW9q0gE" },
       { n: "03", client: "Savvy", industry: "منتج دردشة بالذكاء الاصطناعي", services: "Vite · NestJS · OpenAI", cover: "assets/portfolio/savvy-cover.png", url: "https://savvyai.info/" },
       { n: "04", client: "ElAvvocato", industry: "نظام إدارة مكاتب محاماة", services: "Full-stack · Roles · Documents", cover: "assets/portfolio/elavvocato-cover.png", url: "https://apps.apple.com/eg/app/elavvocato/id6670542137" },
-      { n: "05", client: "Taqdum ERP", industry: "منصة ERP وتشغيل داخلي", services: "React · NestJS · Automation", placeholder: "دراسة حالة خاصة" }
+      { n: "05", client: "Taqdum ERP", industry: "منصة ERP وتشغيل داخلي", services: "React · NestJS · Automation", logo: "assets/logo-icon.png", placeholder: "دراسة حالة خاصة" }
     ],
     res: {
       eyebrow: "النتائج",
@@ -250,8 +248,6 @@ const CONTENT = {
   }
 };
 
-const GITHUB_PROFILE = "https://github.com/IslamElswafy";
-
 const PORTFOLIO_INSERTS = {
   en: [
     {
@@ -259,6 +255,7 @@ const PORTFOLIO_INSERTS = {
       industry: "AI Chat Product",
       services: "Vite · NestJS · OpenAI",
       cover: "assets/portfolio/savvy-cover.png",
+      logo: "assets/portfolio/savvy-logo.svg",
       url: "https://savvyai.info/"
     },
     {
@@ -266,6 +263,7 @@ const PORTFOLIO_INSERTS = {
       industry: "Law Firm Management System",
       services: "Full-stack · Roles · Documents",
       cover: "assets/portfolio/elavvocato-cover.png",
+      logo: "assets/portfolio/elavvocato-logo.png",
       url: "https://apps.apple.com/eg/app/elavvocato/id6670542137"
     }
   ],
@@ -275,6 +273,7 @@ const PORTFOLIO_INSERTS = {
       industry: "منتج دردشة بالذكاء الاصطناعي",
       services: "Vite · NestJS · OpenAI",
       cover: "assets/portfolio/savvy-cover.png",
+      logo: "assets/portfolio/savvy-logo.svg",
       url: "https://savvyai.info/"
     },
     {
@@ -282,6 +281,7 @@ const PORTFOLIO_INSERTS = {
       industry: "نظام إدارة مكاتب محاماة",
       services: "Full-stack · Roles · Documents",
       cover: "assets/portfolio/elavvocato-cover.png",
+      logo: "assets/portfolio/elavvocato-logo.png",
       url: "https://apps.apple.com/eg/app/elavvocato/id6670542137"
     }
   ]
@@ -391,9 +391,9 @@ function mapApiProject(project, lang) {
     industry: typeof project.industry === "object" ? project.industry[lang] : project.industry,
     services: typeof project.services === "object" ? project.services[lang] : project.services,
     cover: project.cover || null,
+    logo: project.logo || null,
     placeholder,
-    url: project.url || null,
-    github: project.github || null
+    url: project.url || null
   };
 }
 
@@ -431,26 +431,52 @@ async function loadPortfolioFromGitHub() {
   }
 }
 
+function renderProjectMedia(project, index) {
+  const lazy = index < 2 ? "eager" : "lazy";
+
+  if (project.cover) {
+    return `
+      <div class="featured-media">
+        <div class="featured-media-frame" data-port-media>
+          <img class="featured-cover" src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.client)}" loading="${lazy}">
+        </div>
+      </div>
+    `;
+  }
+
+  if (project.logo) {
+    return `
+      <div class="featured-media">
+        <div class="featured-media-frame featured-media-frame--brand" data-port-media>
+          <img class="featured-logo" src="${escapeHtml(project.logo)}" alt="${escapeHtml(project.client)}">
+          ${project.placeholder ? `<span class="featured-badge">${escapeHtml(project.placeholder)}</span>` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="featured-media">
+      <div class="featured-media-frame featured-media-frame--brand" data-port-media>
+        <strong class="featured-fallback-title">${escapeHtml(project.placeholder || "PRIVATE CASE STUDY")}</strong>
+        <span class="featured-fallback-client">${escapeHtml(project.client)}</span>
+      </div>
+    </div>
+  `;
+}
+
 function renderProjects(t) {
   const list = document.querySelector("[data-project-list]");
   if (!list) return;
   const projects = getProjects(t);
   list.innerHTML = projects.map((project, index) => {
-    const href = project.url || project.github || "#contact";
+    const href = project.url || "#contact";
     const external = href.startsWith("http") ? 'target="_blank" rel="noopener"' : "";
-    const media = project.cover
-      ? `<img class="featured-cover" src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.client)}" loading="${index < 2 ? "eager" : "lazy"}">`
-      : `<div class="featured-placeholder"><strong>${escapeHtml(project.placeholder || "PRIVATE CASE STUDY")}</strong><span>${escapeHtml(project.client)}</span></div>`;
-    const githubLink = project.github
-      ? `<span class="featured-github">${escapeHtml(t.port.github)}</span>`
-      : "";
 
     return `
       <a class="featured-item" href="${escapeHtml(href)}" ${external} data-port-card data-reveal data-cursor data-cursor-text="${escapeHtml(t.port.view)}">
         <article class="featured-card">
-          <div class="featured-media" data-port-media>
-            ${media}
-          </div>
+          ${renderProjectMedia(project, index)}
           <div class="featured-copy">
             <h3 class="featured-heading">
               <span class="featured-client">${escapeHtml(project.client)}</span>
@@ -458,24 +484,12 @@ function renderProjects(t) {
               <span class="featured-tagline">${escapeHtml(project.industry)}</span>
             </h3>
             <p class="featured-stack">${escapeHtml(project.services)}</p>
-            ${githubLink}
             <span class="featured-link">${escapeHtml(t.port.view)}${iconArrow()}</span>
           </div>
         </article>
       </a>
     `;
   }).join("");
-
-  const allLink = document.querySelector(".featured-all");
-  if (allLink && state.portfolioFromGitHub) {
-    allLink.href = GITHUB_PROFILE;
-    allLink.setAttribute("target", "_blank");
-    allLink.setAttribute("rel", "noopener");
-  } else if (allLink) {
-    allLink.href = "#contact";
-    allLink.removeAttribute("target");
-    allLink.removeAttribute("rel");
-  }
 }
 
 function renderProcess(t) {
@@ -734,13 +748,18 @@ function setupPortfolioHover() {
   document.querySelectorAll("[data-port-card]").forEach((card) => {
     if (card.dataset.portBound) return;
     card.dataset.portBound = "true";
+    const frame = card.querySelector("[data-port-media]");
     const cover = card.querySelector(".featured-cover");
-    if (!cover) return;
+    if (!frame) return;
     card.addEventListener("mouseenter", () => {
-      if (!reduceMotion.matches) cover.style.transform = "scale(1.045)";
+      if (!reduceMotion.matches) {
+        if (cover) cover.style.transform = "scale(1.02)";
+        else frame.style.transform = "scale(1.01)";
+      }
     });
     card.addEventListener("mouseleave", () => {
-      cover.style.transform = "scale(1)";
+      if (cover) cover.style.transform = "scale(1)";
+      frame.style.transform = "scale(1)";
     });
   });
 }
