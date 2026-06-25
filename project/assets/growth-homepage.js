@@ -1,6 +1,6 @@
 const CONTACT = {
-  whatsapp: "https://wa.me/201211398298",
-  whatsappLabel: "+20 12 11398298"
+  whatsapp: "https://wa.me/201500099660",
+  whatsappLabel: "01500099660"
 };
 
 const PARTNERS = [
@@ -123,9 +123,6 @@ const CONTENT = {
       contactTitle: "Contact",
       wa: "WhatsApp",
       waVal: CONTACT.whatsappLabel,
-      ig: "Instagram",
-      li: "LinkedIn",
-      fb: "Facebook",
       privacy: "Privacy Policy",
       terms: "Terms & Conditions",
       rights: "© 2026 Growth - Business Growth Partners. All rights reserved."
@@ -242,9 +239,6 @@ const CONTENT = {
       contactTitle: "تواصل",
       wa: "واتساب",
       waVal: CONTACT.whatsappLabel,
-      ig: "إنستغرام",
-      li: "لينكدإن",
-      fb: "فيسبوك",
       privacy: "سياسة الخصوصية",
       terms: "الشروط والأحكام",
       rights: "© 2026 Growth - شركاء النمو. جميع الحقوق محفوظة."
