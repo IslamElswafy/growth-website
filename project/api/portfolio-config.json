@@ -40,7 +40,7 @@
       "en": "React · NestJS · Automation",
       "ar": "React · NestJS · Automation"
     },
-    "cover": null,
+    "cover": "assets/portfolio/taqdum-erp-cover.png",
     "logo": "assets/logo-icon.png",
     "placeholder": {
       "en": "Private Case Study",
@@ -59,7 +59,7 @@
       "en": "Python · Membership · Workouts · Mobile",
       "ar": "Python · اشتراكات · تمارين · موبايل"
     },
-    "cover": null,
+    "cover": "assets/portfolio/fsg-gym-cover.png",
     "logo": "assets/portfolio/fsg-gym-logo.svg",
     "placeholder": {
       "en": "Sports Gym Platform",

@@ -79,8 +79,8 @@ const CONTENT = {
       { n: "02", client: "Blox", industry: "Marketplace Platform", services: "Full-stack · Search · Transactions", cover: "assets/portfolio/blox-cover.png", url: "https://www.linkedin.com/posts/islam-elswifiy-117785246_reactnative-blox-marketplaceapp-activity-7196490222585495552-Ohzh?utm_source=share&utm_medium=member_desktop&rcm=ACoAADz7nmMBt5P0ODlhTJi-vlUlyVsdyW9q0gE" },
       { n: "03", client: "Savvy", industry: "AI Chat Product", services: "Vite · NestJS · OpenAI", cover: "assets/portfolio/savvy-cover.png", url: "https://savvyai.info/" },
       { n: "04", client: "ElAvvocato", industry: "Law Firm Management System", services: "Full-stack · Roles · Documents", cover: "assets/portfolio/elavvocato-cover.png", url: "https://apps.apple.com/eg/app/elavvocato/id6670542137" },
-      { n: "05", client: "Taqdum ERP", industry: "ERP and Operations Platform", services: "React · NestJS · Automation", logo: "assets/logo-icon.png", placeholder: "Private Case Study" },
-      { n: "06", client: "FSG Gym", industry: "Sports Gym & Fitness Platform", services: "Python · Membership · Workouts · Mobile", logo: "assets/portfolio/fsg-gym-logo.svg", placeholder: "Sports Gym Platform" },
+      { n: "05", client: "Taqdum ERP", industry: "ERP and Operations Platform", services: "React · NestJS · Automation", cover: "assets/portfolio/taqdum-erp-cover.png", logo: "assets/logo-icon.png", placeholder: "Private Case Study" },
+      { n: "06", client: "FSG Gym", industry: "Sports Gym & Fitness Platform", services: "Python · Membership · Workouts · Mobile", cover: "assets/portfolio/fsg-gym-cover.png", logo: "assets/portfolio/fsg-gym-logo.svg", placeholder: "Sports Gym Platform" },
       { n: "07", client: "Growth Mobile", industry: "Cross-Platform Mobile Application", services: "React Native · TypeScript · API Integration", logo: "assets/portfolio/mobile-app-logo.svg", placeholder: "Mobile Application" }
     ],
     res: {
@@ -198,8 +198,8 @@ const CONTENT = {
       { n: "02", client: "Blox", industry: "منصة سوق سيارات", services: "Full-stack · Search · Transactions", cover: "assets/portfolio/blox-cover.png", url: "https://www.linkedin.com/posts/islam-elswifiy-117785246_reactnative-blox-marketplaceapp-activity-7196490222585495552-Ohzh?utm_source=share&utm_medium=member_desktop&rcm=ACoAADz7nmMBt5P0ODlhTJi-vlUlyVsdyW9q0gE" },
       { n: "03", client: "Savvy", industry: "منتج دردشة بالذكاء الاصطناعي", services: "Vite · NestJS · OpenAI", cover: "assets/portfolio/savvy-cover.png", url: "https://savvyai.info/" },
       { n: "04", client: "ElAvvocato", industry: "نظام إدارة مكاتب محاماة", services: "Full-stack · Roles · Documents", cover: "assets/portfolio/elavvocato-cover.png", url: "https://apps.apple.com/eg/app/elavvocato/id6670542137" },
-      { n: "05", client: "Taqdum ERP", industry: "منصة ERP وتشغيل داخلي", services: "React · NestJS · Automation", logo: "assets/logo-icon.png", placeholder: "دراسة حالة خاصة" },
-      { n: "06", client: "FSG Gym", industry: "منصة جيم رياضي ولياقة بدنية", services: "Python · اشتراكات · تمارين · موبايل", logo: "assets/portfolio/fsg-gym-logo.svg", placeholder: "منصة جيم رياضي" },
+      { n: "05", client: "Taqdum ERP", industry: "منصة ERP وتشغيل داخلي", services: "React · NestJS · Automation", cover: "assets/portfolio/taqdum-erp-cover.png", logo: "assets/logo-icon.png", placeholder: "دراسة حالة خاصة" },
+      { n: "06", client: "FSG Gym", industry: "منصة جيم رياضي ولياقة بدنية", services: "Python · اشتراكات · تمارين · موبايل", cover: "assets/portfolio/fsg-gym-cover.png", logo: "assets/portfolio/fsg-gym-logo.svg", placeholder: "منصة جيم رياضي" },
       { n: "07", client: "Growth Mobile", industry: "تطبيق موبايل متعدد المنصات", services: "React Native · TypeScript · تكامل API", logo: "assets/portfolio/mobile-app-logo.svg", placeholder: "تطبيق موبايل" }
     ],
     res: {
