@@ -42,9 +42,11 @@ const CONTENT = {
       note: "Selected partners and products from the portfolio"
     },
     serv: {
-      eyebrow: "Services",
-      title: "One Partner. Every Growth Function.",
-      cta: "Start a conversation"
+      eyebrow: "What we do",
+      title: "Our services",
+      intro: "From strategy and brand to AI-powered products — we design and build the growth systems ambitious businesses need.",
+      cta: "Start a conversation",
+      all: "View all services"
     },
     services: [
       { n: "01", name: "Business Strategy", tag: "Strategy", desc: "Clarity on where to play and how to win - grounded in market reality, not guesswork.", caps: ["Market & business analysis", "Competitive analysis", "Growth planning", "Business model development", "Market-entry strategy"] },
@@ -66,10 +68,11 @@ const CONTENT = {
       { n: "05", name: "Scale", desc: "Review performance, improve results, and expand what works." }
     ],
     port: {
-      eyebrow: "Selected Work",
-      title: "Growth Stories",
-      intro: "How strategy, design, and technology come together. Real client details available on request.",
-      view: "View Project"
+      eyebrow: "Featured projects",
+      title: "Selected work",
+      intro: "Strategy, design, and technology woven into products and platforms — part of the Growth story, not a separate gallery.",
+      view: "View project",
+      all: "View all projects"
     },
     projects: [
       { n: "01", client: "Graphinion", industry: "Social Media Application", services: "React Native · TypeScript · Redux", cover: "assets/portfolio/graphinion-cover.webp", url: "https://apps.apple.com/us/app/graphinion/id6503644174" },
@@ -156,9 +159,11 @@ const CONTENT = {
       note: "شركاء ومنتجات مختارة من البرتفوليو"
     },
     serv: {
-      eyebrow: "خدماتنا",
-      title: "شريك واحد لكل ما تحتاجه شركتك للنمو.",
-      cta: "ابدأ المحادثة"
+      eyebrow: "ماذا نفعل",
+      title: "خدماتنا",
+      intro: "من الاستراتيجية والعلامة إلى المنتجات المدعومة بالذكاء الاصطناعي — نصمّم ونبني منظومات النمو التي تحتاجها الشركات الطموحة.",
+      cta: "ابدأ المحادثة",
+      all: "عرض كل الخدمات"
     },
     services: [
       { n: "01", name: "استراتيجية الأعمال", tag: "الاستراتيجية", desc: "رؤية واضحة لأين تتنافس وكيف تكسب، مبنية على واقع السوق لا على التخمين.", caps: ["تحليل السوق والأعمال", "تحليل المنافسين", "تخطيط النمو", "تطوير نموذج العمل", "استراتيجية دخول السوق"] },
@@ -180,10 +185,11 @@ const CONTENT = {
       { n: "05", name: "نتوسع", desc: "نقيس الأداء، نحسّن النتائج، ونوسّع ما ينجح." }
     ],
     port: {
-      eyebrow: "أعمال مختارة",
-      title: "قصص نمو صنعناها",
-      intro: "كيف تتكامل الاستراتيجية والتصميم والتقنية. تفاصيل العملاء الحقيقية متاحة عند الطلب.",
-      view: "عرض المشروع"
+      eyebrow: "مشاريع مميزة",
+      title: "أعمال مختارة",
+      intro: "استراتيجية وتصميم وتقنية في منتجات ومنصات حقيقية — جزء من قصة Growth، وليست معرضًا منفصلًا.",
+      view: "عرض المشروع",
+      all: "عرض كل المشاريع"
     },
     projects: [
       { n: "01", client: "Graphinion", industry: "تطبيق تواصل اجتماعي", services: "React Native · TypeScript · Redux", cover: "assets/portfolio/graphinion-cover.webp", url: "https://apps.apple.com/us/app/graphinion/id6503644174" },
@@ -315,33 +321,52 @@ function renderPartners(t) {
 function renderServices(t) {
   const list = document.querySelector("[data-service-list]");
   if (!list) return;
-  list.innerHTML = t.services.map((service, index) => `
-    <article class="service-card service-card-${index + 1}" data-serv-card data-num="${escapeHtml(service.n)}" data-name="${escapeHtml(service.name)}" data-tag="${escapeHtml(service.tag)}">
-      <div data-reveal>
-        <div class="service-visual" aria-hidden="true">
-          <span class="service-visual-grid"></span>
-          <span class="service-visual-node service-visual-node-a"></span>
-          <span class="service-visual-node service-visual-node-b"></span>
-          <span class="service-visual-node service-visual-node-c"></span>
-          <span class="service-visual-line service-visual-line-a"></span>
-          <span class="service-visual-line service-visual-line-b"></span>
-          <span class="service-visual-bars"><span></span><span></span><span></span></span>
-        </div>
-        <div class="service-heading">
-          <span>${escapeHtml(service.n)}</span>
+  list.innerHTML = t.services.map((service) => `
+    <article class="service-row" data-serv-card data-reveal>
+      <div class="service-row-top">
+        <span class="service-row-num">${escapeHtml(service.n)}</span>
+        <div class="service-row-main">
           <h3>${escapeHtml(service.name)}</h3>
+          <p>${escapeHtml(service.desc)}</p>
         </div>
-        <p>${escapeHtml(service.desc)}</p>
-        <ul class="chip-list">
-          ${service.caps.map((cap) => `<li>${escapeHtml(cap)}</li>`).join("")}
-        </ul>
-        <a class="text-link" href="${CONTACT.whatsapp}" target="_blank" rel="noopener" data-cursor>
-          ${escapeHtml(t.serv.cta)}
-          <span data-iconflip>${iconArrow()}</span>
-        </a>
+        <span class="service-row-arrow" aria-hidden="true">${iconArrow()}</span>
+      </div>
+      <div class="service-row-caps">
+        ${service.caps.map((cap) => `<span>${escapeHtml(cap)}</span>`).join("")}
       </div>
     </article>
   `).join("");
+}
+
+function renderProjects(t) {
+  const list = document.querySelector("[data-project-list]");
+  if (!list) return;
+  list.innerHTML = t.projects.map((project, index) => {
+    const href = project.url || "#contact";
+    const external = project.url ? 'target="_blank" rel="noopener"' : "";
+    const media = project.cover
+      ? `<img class="featured-cover" src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.client)}" loading="${index < 2 ? "eager" : "lazy"}">`
+      : `<div class="featured-placeholder"><strong>${escapeHtml(project.placeholder || "PRIVATE CASE STUDY")}</strong><span>${escapeHtml(project.client)}</span></div>`;
+
+    return `
+      <a class="featured-item" href="${escapeHtml(href)}" ${external} data-port-card data-reveal data-cursor data-cursor-text="${escapeHtml(t.port.view)}">
+        <article class="featured-card">
+          <div class="featured-media" data-port-media>
+            ${media}
+          </div>
+          <div class="featured-copy">
+            <h3 class="featured-heading">
+              <span class="featured-client">${escapeHtml(project.client)}</span>
+              <span class="featured-sep" aria-hidden="true"> – </span>
+              <span class="featured-tagline">${escapeHtml(project.industry)}</span>
+            </h3>
+            <p class="featured-stack">${escapeHtml(project.services)}</p>
+            <span class="featured-link">${escapeHtml(t.port.view)}${iconArrow()}</span>
+          </div>
+        </article>
+      </a>
+    `;
+  }).join("");
 }
 
 function renderProcess(t) {
@@ -355,35 +380,6 @@ function renderProcess(t) {
         <p>${escapeHtml(step.desc)}</p>
       </div>
     </article>
-  `).join("");
-}
-
-function renderProjects(t) {
-  const list = document.querySelector("[data-project-list]");
-  if (!list) return;
-  const count = `0${t.projects.length}`;
-  list.innerHTML = t.projects.map((project) => `
-    <a class="project-card" href="${escapeHtml(project.url || "#contact")}" ${project.url ? 'target="_blank" rel="noopener"' : ""} data-port-card data-cursor data-cursor-text="${escapeHtml(t.port.view)}">
-      <article class="project-shell">
-        <div class="project-media" data-port-media>
-          <div class="project-tint"></div>
-          <div class="project-number">${escapeHtml(project.n)} <span>/ ${count}</span></div>
-          <div class="project-showcase ${project.cover ? "" : "project-showcase-placeholder"}">
-            ${project.cover ? `<img class="project-cover" src="${escapeHtml(project.cover)}" alt="${escapeHtml(project.client)} project preview">` : `<strong>${escapeHtml(project.placeholder || "PRIVATE CASE STUDY")}</strong><span>${escapeHtml(project.client)}</span>`}
-          </div>
-          <div class="project-info">
-            <div class="project-title-row">
-              <h3>${escapeHtml(project.client)}</h3>
-              <span>${escapeHtml(project.industry)}</span>
-            </div>
-            <div class="project-meta">
-              <span>${escapeHtml(project.services)}</span>
-              <span class="project-view">${escapeHtml(t.port.view)}${iconArrow()}</span>
-            </div>
-          </div>
-        </div>
-      </article>
-    </a>
   `).join("");
 }
 
@@ -432,75 +428,22 @@ function renderFooterServices(t) {
   list.innerHTML = t.services.map((service) => `<a href="#services">${escapeHtml(service.name)}</a>`).join("");
 }
 
-function syncServiceSticky() {
-  const cards = [...document.querySelectorAll("[data-serv-card]")];
-  const card = cards[state.activeService] || cards[0];
-  if (!card) return;
-
-  const num = document.querySelector("[data-serv-num]");
-  const name = document.querySelector("[data-serv-name]");
-  const tag = document.querySelector("[data-serv-tag]");
-  if (num) num.textContent = card.dataset.num;
-  if (name) name.textContent = card.dataset.name;
-  if (tag) tag.textContent = card.dataset.tag;
-
-  const dots = document.querySelector("[data-serv-dots]");
-  if (dots) {
-    dots.innerHTML = cards.map((_, index) => `<span class="${index === state.activeService ? "is-active" : ""}"></span>`).join("");
-  }
-}
-
-function updateServiceActive() {
-  const cards = [...document.querySelectorAll("[data-serv-card]")];
-  if (!cards.length) return;
-
-  const mid = window.innerHeight * .5;
-  let best = state.activeService;
-  let bestDistance = Number.POSITIVE_INFINITY;
-  cards.forEach((card, index) => {
-    const rect = card.getBoundingClientRect();
-    const center = rect.top + rect.height / 2;
-    const distance = Math.abs(center - mid);
-    if (distance < bestDistance) {
-      bestDistance = distance;
-      best = index;
-    }
-  });
-
-  if (best !== state.activeService) {
-    state.activeService = best;
-    syncServiceSticky();
-  }
-}
-
 function setupPortfolio() {
-  const port = document.querySelector("[data-port]");
-  const pin = document.querySelector("[data-port-pin]");
   const track = document.querySelector("[data-port-track]");
-  const cards = [...document.querySelectorAll("[data-port-card]")];
-  if (!port || !pin || !track) return;
-
-  state.portOn = false;
-  state.maxPortX = 0;
-  pin.removeAttribute("style");
-  track.style.flexDirection = "";
-  track.style.alignItems = "";
-  track.style.transform = "none";
-  cards.forEach((card) => {
-    card.style.width = "";
-  });
-  port.style.height = "";
+  if (track) track.style.transform = "none";
 }
 
-function updatePortfolio() {
-  const port = document.querySelector("[data-port]");
-  const track = document.querySelector("[data-port-track]");
-  if (!state.portOn || !port || !track) return;
+function updatePortfolio() {}
 
-  const rect = port.getBoundingClientRect();
-  const progress = Math.max(0, Math.min(1, -rect.top / (port.offsetHeight - window.innerHeight)));
-  const x = state.maxPortX * progress;
-  track.style.transform = `translateX(${state.lang === "ar" ? x : -x}px)`;
+function setupServiceRows() {
+  document.querySelectorAll("[data-serv-card]").forEach((row) => {
+    if (row.dataset.servBound) return;
+    row.dataset.servBound = "true";
+    row.addEventListener("mouseenter", () => row.classList.add("is-active"));
+    row.addEventListener("mouseleave", () => row.classList.remove("is-active"));
+    row.addEventListener("focusin", () => row.classList.add("is-active"));
+    row.addEventListener("focusout", () => row.classList.remove("is-active"));
+  });
 }
 
 function updateProcess() {
@@ -560,7 +503,6 @@ function onScroll() {
   updateHeroParallax();
   updateProcess();
   updatePortfolio();
-  updateServiceActive();
 }
 
 function setupReveals() {
@@ -683,13 +625,13 @@ function setupPortfolioHover() {
   document.querySelectorAll("[data-port-card]").forEach((card) => {
     if (card.dataset.portBound) return;
     card.dataset.portBound = "true";
-    const media = card.querySelector("[data-port-media]");
-    if (!media) return;
+    const cover = card.querySelector(".featured-cover");
+    if (!cover) return;
     card.addEventListener("mouseenter", () => {
-      if (!reduceMotion.matches) media.style.transform = "scale(1.03)";
+      if (!reduceMotion.matches) cover.style.transform = "scale(1.045)";
     });
     card.addEventListener("mouseleave", () => {
-      media.style.transform = "scale(1)";
+      cover.style.transform = "scale(1)";
     });
   });
 }
@@ -790,8 +732,8 @@ function render() {
   renderIndustries(t);
   renderInsights(t);
   renderFooterServices(t);
-  syncServiceSticky();
   setupReveals();
+  setupServiceRows();
   setupIndustryGlow();
   setupPortfolioHover();
   setupCursor();
